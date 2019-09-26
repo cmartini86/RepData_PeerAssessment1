@@ -11,7 +11,7 @@ output:
 Load the data (i.e. read.csv())
 
 ```{r echo=TRUE}
-data <- read.csv("activity.csv", header = TRUE, sep = ",", na.strings = "NA")
+activity = read.csv("activity.csv", header = TRUE, sep = ",", na.strings = "NA")
 ```
 
 Process/transform the data (if necessary) into a format suitable for your analysis
