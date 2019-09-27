@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+  <!-- saved from url=(0014)about:internet -->
+  <!-- large "img" text removed for code readability  -->
+    <html>
+    
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="x-ua-compatible" content="IE=9">
+        
+        <title>RepData peer Assesssment 1</title>
+        
+        <style type="text/css">
+          body,
+        td {
+          font-family: sans-serif;
+          background-color: white;
+          font-size: 12px;
+          margin: 8px;
+        }
+        
+        tt,
+        code,
+        pre {
+          font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+        }
+        
+        h1 {
+          font-size: 2.2em;
+        }
+        
+        h2 {
+          font-size: 1.8em;
+        }
+        
+        h3 {
+          font-size: 1.4em;
+        }
+        
+        h4 {
+          font-size: 1.0em;
+        }
+        
+        h5 {
+          font-size: 0.9em;
+        }
+        
+        h6 {
+          font-size: 0.8em;
+        }
+        
+        a:visited {
+          color: rgb(50%, 0%, 50%);
+        }
+        
+        pre {
+          margin-top: 0;
+          max-width: 95%;
+          border: 1px solid #ccc;
+          white-space: pre-wrap;
+        }
+        
+        pre code {
+          display: block;
+          padding: 0.5em;
+        }
+        
+        code.r,
+        code.cpp {
+          background-color: #F8F8F8;
+        }
+        
+        table,
+        td,
+        th {
+          border: none;
+        }
+        
+        blockquote {
+          color: #666666;
+            margin: 0;
+          padding-left: 1em;
+          border-left: 0.5em #EEE solid;
+        }
+        
+        hr {
+          height: 0px;
+          border-bottom: none;
+          border-top-width: thin;
+          border-top-style: dotted;
+          border-top-color: #999999;
+        }
+        
+        @media print {
+          * {
+            background: transparent !important;
+            color: black !important;
+            filter: none !important;
+            -ms-filter: none !important;
+          }
+          body {
+            font-size: 12pt;
+            max-width: 100%;
+          }
+          a,
+          a:visited {
+            text-decoration: underline;
+          }
+          hr {
+            visibility: hidden;
+            page-break-before: always;
+          }
+          pre,
+          blockquote {
+            padding-right: 1em;
+            page-break-inside: avoid;
+          }
+          tr,
+          img {
+            page-break-inside: avoid;
+          }
+          img {
+            max-width: 100% !important;
+          }
+          @page :left {
+            margin: 15mm 20mm 15mm 10mm;
+          }
+          @page :right {
+            margin: 15mm 10mm 15mm 20mm;
+          }
+          p,
+          h2,
+          h3 {
+            orphans: 3;
+            widows: 3;
+          }
+          h2,
+          h3 {
+            page-break-after: avoid;
+          }
+        }
+        </style>
+          
+          <!-- Styles for R syntax highlighter -->
+          <style type="text/css">
+          pre .operator,
+        pre .paren {
+          color: rgb(104, 118, 135)
+        }
+        
+        pre .literal {
+          color: rgb(88, 72, 246)
+        }
+        
+        pre .number {
+          color: rgb(0, 0, 205);
+        }
+        
+        pre .comment {
+          color: rgb(76, 136, 107);
+        }
+        
+        pre .keyword {
+          color: rgb(0, 0, 255);
+        }
+        
+        pre .identifier {
+          color: rgb(0, 0, 0);
+        }
+        
+        pre .string {
+          color: rgb(3, 106, 7);
+        }
+        </style>
+          
+          <!-- R syntax highlighter -->
+          <script type="text/javascript">
+          var hljs = new function() {
+            function m(p) {
+              return p.replace(/&/gm, "&amp;").replace(/</gm, "&lt;")
+            }
+            
+            function f(r, q, p) {
+              return RegExp(q, "m" + (r.cI ? "i" : "") + (p ? "g" : ""))
+            }
+            
+            function b(r) {
+              for (var p = 0; p < r.childNodes.length; p++) {
+                var q = r.childNodes[p];
+                if (q.nodeName == "CODE") {
+                  return q
+                }
+                if (!(q.nodeType == 3 && q.nodeValue.match(/\s+/))) {
+                  break
+                }
+              }
+            }
+            
+            function h(t, s) {
+              var p = "";
+              for (var r = 0; r < t.childNodes.length; r++) {
+                if (t.childNodes[r].nodeType == 3) {
+                  var q = t.childNodes[r].nodeValue;
+                  if (s) {
+                    q = q.replace(/\n/g, "")
+                  }
+                  p += q
+                } else {
+                  if (t.childNodes[r].nodeName == "BR") {
+                    p += "\n"
+                  } else {
+                    p += h(t.childNodes[r])
+                  }
+                }
+              }
+              if (/MSIE [678]/.test(navigator.userAgent)) {
+                p = p.replace(/\r/g, "\n")
+              }
+              return p
+            }
+            
+            function a(s) {
+              var r = s.className.split(/\s+/);
+              r = r.concat(s.parentNode.className.split(/\s+/));
+              for (var q = 0; q < r.length; q++) {
+                var p = r[q].replace(/^language-/, "");
+                if (e[p]) {
+                  return p
+                }
+              }
+            }
+            
+            function c(q) {
+              var p = [];
+              (function(s, t) {
+                for (var r = 0; r < s.childNodes.length; r++) {
+                  if (s.childNodes[r].nodeType == 3) {
+                    t += s.childNodes[r].nodeValue.length
+                  } else {
+                    if (s.childNodes[r].nodeName == "BR") {
+                      t += 1
+                    } else {
+                      if (s.childNodes[r].nodeType == 1) {
+                        p.push({
+                          event: "start",
+                          offset: t,
+                          node: s.childNodes[r]
+                        });
+                        t = arguments.callee(s.childNodes[r], t);
+                        p.push({
+                          event: "stop",
+                          offset: t,
+                          node: s.childNodes[r]
+                        })
+                      }
+                    }
+                  }
+                }
+                return t
+              })(q, 0);
+              return p
+            }
+            
+            function k(y, w, x) {
+              var q = 0;
+              var z = "";
+              var s = [];
+              
+              function u() {
+                if (y.length && w.length) {
+                  if (y[0].offset != w[0].offset) {
+                    return (y[0].offset < w[0].offset) ? y : w
+                  } else {
+                    return w[0].event == "start" ? y : w
+                  }
+                } else {
+                  return y.length ? y : w
+                }
+              }
+              
+              function t(D) {
+                var A = "<" + D.nodeName.toLowerCase();
+                for (var B = 0; B < D.attributes.length; B++) {
+                  var C = D.attributes[B];
+                  A += " " + C.nodeName.toLowerCase();
+                  if (C.value !== undefined && C.value !== false && C.value !== null) {
+                    A += '="' + m(C.value) + '"'
+                  }
+                }
+                return A + ">"
+              }
+              while (y.length || w.length) {
+                var v = u().splice(0, 1)[0];
+                z += m(x.substr(q, v.offset - q));
+                q = v.offset;
+                if (v.event == "start") {
+                  z += t(v.node);
+                  s.push(v.node)
+                } else {
+                  if (v.event == "stop") {
+                    var p, r = s.length;
+                    do {
+                      r--;
+                      p = s[r];
+                      z += ("</" + p.nodeName.toLowerCase() + ">")
+                    } while (p != v.node);
+                    s.splice(r, 1);
+                    while (r < s.length) {
+                      z += t(s[r]);
+                      r++
+                    }
+                  }
+                }
+              }
+              return z + m(x.substr(q))
+            }
+            
+            function j() {
+              function q(x, y, v) {
+                if (x.compiled) {
+                  return
+                }
+                var u;
+                var s = [];
+                if (x.k) {
+                  x.lR = f(y, x.l || hljs.IR, true);
+                  for (var w in x.k) {
+                    if (!x.k.hasOwnProperty(w)) {
+                      continue
+                    }
+                    if (x.k[w] instanceof Object) {
+                      u = x.k[w]
+                    } else {
+                      u = x.k;
+                      w = "keyword"
+                    }
+                    for (var r in u) {
+                      if (!u.hasOwnProperty(r)) {
+                        continue
+                      }
+                      x.k[r] = [w, u[r]];
+                      s.push(r)
+                    }
+                  }
+                }
+                if (!v) {
+                  if (x.bWK) {
+                    x.b = "\\b(" + s.join("|") + ")\\s"
+                  }
+                  x.bR = f(y, x.b ? x.b : "\\B|\\b");
+                  if (!x.e && !x.eW) {
+                    x.e = "\\B|\\b"
+                  }
+                  if (x.e) {
+                    x.eR = f(y, x.e)
+                  }
+                }
+                if (x.i) {
+                  x.iR = f(y, x.i)
+                }
+                if (x.r === undefined) {
+                  x.r = 1
+                }
+                if (!x.c) {
+                  x.c = []
+                }
+                x.compiled = true;
+                for (var t = 0; t < x.c.length; t++) {
+                  if (x.c[t] == "self") {
+                    x.c[t] = x
+                  }
+                  q(x.c[t], y, false)
+                }
+                if (x.starts) {
+                  q(x.starts, y, false)
+                }
+              }
+              for (var p in e) {
+                if (!e.hasOwnProperty(p)) {
+                  continue
+                }
+                q(e[p].dM, e[p], true)
+              }
+            }
+            
+            function d(B, C) {
+              if (!j.called) {
+                j();
+                j.called = true
+              }
+              
+              function q(r, M) {
+                for (var L = 0; L < M.c.length; L++) {
+                  if ((M.c[L].bR.exec(r) || [null])[0] == r) {
+                    return M.c[L]
+                  }
+                }
+              }
+              
+              function v(L, r) {
+                if (D[L].e && D[L].eR.test(r)) {
+                  return 1
+                }
+                if (D[L].eW) {
+                  var M = v(L - 1, r);
+                  return M ? M + 1 : 0
+                }
+                return 0
+              }
+              
+              function w(r, L) {
+                return L.i && L.iR.test(r)
+              }
+              
+              function K(N, O) {
+                var M = [];
+                for (var L = 0; L < N.c.length; L++) {
+                  M.push(N.c[L].b)
+                }
+                var r = D.length - 1;
+                do {
+                  if (D[r].e) {
+                    M.push(D[r].e)
+                  }
+                  r--
+                } while (D[r + 1].eW);
+                if (N.i) {
+                  M.push(N.i)
+                }
+                return f(O, M.join("|"), true)
+              }
+              
+              function p(M, L) {
+                var N = D[D.length - 1];
+                if (!N.t) {
+                  N.t = K(N, E)
+                }
+                N.t.lastIndex = L;
+                var r = N.t.exec(M);
+                return r ? [M.substr(L, r.index - L), r[0], false] : [M.substr(L), "", true]
+              }
+              
+              function z(N, r) {
+                var L = E.cI ? r[0].toLowerCase() : r[0];
+                var M = N.k[L];
+                if (M && M instanceof Array) {
+                  return M
+                }
+                return false
+              }
+              
+              function F(L, P) {
+                L = m(L);
+                if (!P.k) {
+                  return L
+                }
+                var r = "";
+                var O = 0;
+                P.lR.lastIndex = 0;
+                var M = P.lR.exec(L);
+                while (M) {
+                  r += L.substr(O, M.index - O);
+                  var N = z(P, M);
+                  if (N) {
+                    x += N[1];
+                    r += '<span class="' + N[0] + '">' + M[0] + "</span>"
+                  } else {
+                    r += M[0]
+                  }
+                  O = P.lR.lastIndex;
+                  M = P.lR.exec(L)
+                }
+                return r + L.substr(O, L.length - O)
+              }
+              
+              function J(L, M) {
+                if (M.sL && e[M.sL]) {
+                  var r = d(M.sL, L);
+                  x += r.keyword_count;
+                  return r.value
+                } else {
+                  return F(L, M)
+                }
+              }
+              
+              function I(M, r) {
+                var L = M.cN ? '<span class="' + M.cN + '">' : "";
+                if (M.rB) {
+                  y += L;
+                  M.buffer = ""
+                } else {
+                  if (M.eB) {
+                    y += m(r) + L;
+                    M.buffer = ""
+                  } else {
+                    y += L;
+                    M.buffer = r
+                  }
+                }
+                D.push(M);
+                A += M.r
+              }
+              
+              function G(N, M, Q) {
+                var R = D[D.length - 1];
+                if (Q) {
+                  y += J(R.buffer + N, R);
+                  return false
+                }
+                var P = q(M, R);
+                if (P) {
+                  y += J(R.buffer + N, R);
+                  I(P, M);
+                  return P.rB
+                }
+                var L = v(D.length - 1, M);
+                if (L) {
+                  var O = R.cN ? "</span>" : "";
+                  if (R.rE) {
+                    y += J(R.buffer + N, R) + O
+                  } else {
+                    if (R.eE) {
+                      y += J(R.buffer + N, R) + O + m(M)
+                    } else {
+                      y += J(R.buffer + N + M, R) + O
+                    }
+                  }
+                  while (L > 1) {
+                    O = D[D.length - 2].cN ? "</span>" : "";
+                    y += O;
+                    L--;
+                    D.length--
+                  }
+                  var r = D[D.length - 1];
+                  D.length--;
+                  D[D.length - 1].buffer = "";
+                  if (r.starts) {
+                    I(r.starts, "")
+                  }
+                  return R.rE
+                }
+                if (w(M, R)) {
+                  throw "Illegal"
+                }
+              }
+              var E = e[B];
+              var D = [E.dM];
+              var A = 0;
+              var x = 0;
+              var y = "";
+              try {
+                var s, u = 0;
+                E.dM.buffer = "";
+                do {
+                  s = p(C, u);
+                  var t = G(s[0], s[1], s[2]);
+                  u += s[0].length;
+                  if (!t) {
+                    u += s[1].length
+                  }
+                } while (!s[2]);
+                if (D.length > 1) {
+                  throw "Illegal"
+                }
+                return {
+                  r: A,
+                  keyword_count: x,
+                  value: y
+                }
+              } catch (H) {
+                if (H == "Illegal") {
+                  return {
+                    r: 0,
+                    keyword_count: 0,
+                    value: m(C)
+                  }
+                } else {
+                  throw H
+                }
+              }
+            }
+            
+            function g(t) {
+              var p = {
+                keyword_count: 0,
+                r: 0,
+                value: m(t)
+              };
+              var r = p;
+              for (var q in e) {
+                if (!e.hasOwnProperty(q)) {
+                  continue
+                }
+                var s = d(q, t);
+                s.language = q;
+                if (s.keyword_count + s.r > r.keyword_count + r.r) {
+                  r = s
+                }
+                if (s.keyword_count + s.r > p.keyword_count + p.r) {
+                  r = p;
+                  p = s
+                }
+              }
+              if (r.language) {
+                p.second_best = r
+              }
+              return p
+            }
+            
+            function i(r, q, p) {
+              if (q) {
+                r = r.replace(/^((<[^>]+>|\t)+)/gm, function(t, w, v, u) {
+                  return w.replace(/\t/g, q)
+                })
+              }
+              if (p) {
+                r = r.replace(/\n/g, "<br>")
+              }
+              return r
+            }
+            
+            function n(t, w, r) {
+              var x = h(t, r);
+              var v = a(t);
+              var y, s;
+              if (v) {
+                y = d(v, x)
+              } else {
+                return
+              }
+              var q = c(t);
+              if (q.length) {
+                s = document.createElement("pre");
+                s.innerHTML = y.value;
+                y.value = k(q, c(s), x)
+              }
+              y.value = i(y.value, w, r);
+              var u = t.className;
+              if (!u.match("(\\s|^)(language-)?" + v + "(\\s|$)")) {
+                u = u ? (u + " " + v) : v
+              }
+              if (/MSIE [678]/.test(navigator.userAgent) && t.tagName == "CODE" && t.parentNode.tagName == "PRE") {
+                s = t.parentNode;
+                var p = document.createElement("div");
+                p.innerHTML = "<pre><code>" + y.value + "</code></pre>";
+                t = p.firstChild.firstChild;
+                p.firstChild.cN = s.cN;
+                s.parentNode.replaceChild(p.firstChild, s)
+              } else {
+                t.innerHTML = y.value
+              }
+              t.className = u;
+              t.result = {
+                language: v,
+                kw: y.keyword_count,
+                re: y.r
+              };
+              if (y.second_best) {
+                t.second_best = {
+                  language: y.second_best.language,
+                  kw: y.second_best.keyword_count,
+                  re: y.second_best.r
+                }
+              }
+            }
+            
+            function o() {
+              if (o.called) {
+                return
+              }
+              o.called = true;
+              var r = document.getElementsByTagName("pre");
+              for (var p = 0; p < r.length; p++) {
+                var q = b(r[p]);
+                if (q) {
+                  n(q, hljs.tabReplace)
+                }
+              }
+            }
+            
+            function l() {
+              if (window.addEventListener) {
+                window.addEventListener("DOMContentLoaded", o, false);
+                window.addEventListener("load", o, false)
+              } else {
+                if (window.attachEvent) {
+                  window.attachEvent("onload", o)
+                } else {
+                  window.onload = o
+                }
+              }
+            }
+            var e = {};
+            this.LANGUAGES = e;
+            this.highlight = d;
+            this.highlightAuto = g;
+            this.fixMarkup = i;
+            this.highlightBlock = n;
+            this.initHighlighting = o;
+            this.initHighlightingOnLoad = l;
+            this.IR = "[a-zA-Z][a-zA-Z0-9_]*";
+            this.UIR = "[a-zA-Z_][a-zA-Z0-9_]*";
+            this.NR = "\\b\\d+(\\.\\d+)?";
+            this.CNR = "\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";
+            this.BNR = "\\b(0b[01]+)";
+            this.RSR = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";
+            this.ER = "(?![\\s\\S])";
+            this.BE = {
+              b: "\\\\.",
+              r: 0
+            };
+            this.ASM = {
+              cN: "string",
+              b: "'",
+              e: "'",
+              i: "\\n",
+              c: [this.BE],
+              r: 0
+            };
+            this.QSM = {
+              cN: "string",
+              b: '"',
+              e: '"',
+              i: "\\n",
+              c: [this.BE],
+              r: 0
+            };
+            this.CLCM = {
+              cN: "comment",
+              b: "//",
+              e: "$"
+            };
+            this.CBLCLM = {
+              cN: "comment",
+              b: "/\\*",
+              e: "\\*/"
+            };
+            this.HCM = {
+              cN: "comment",
+              b: "#",
+              e: "$"
+            };
+            this.NM = {
+              cN: "number",
+              b: this.NR,
+              r: 0
+            };
+            this.CNM = {
+              cN: "number",
+              b: this.CNR,
+              r: 0
+            };
+            this.BNM = {
+              cN: "number",
+              b: this.BNR,
+              r: 0
+            };
+            this.inherit = function(r, s) {
+              var p = {};
+              for (var q in r) {
+                p[q] = r[q]
+              }
+              if (s) {
+                for (var q in s) {
+                  p[q] = s[q]
+                }
+              }
+              return p
+            }
+          }();
+        hljs.LANGUAGES.cpp = function() {
+          var a = {
+            keyword: {
+              "false": 1,
+              "int": 1,
+              "float": 1,
+              "while": 1,
+              "private": 1,
+              "char": 1,
+              "catch": 1,
+              "export": 1,
+              virtual: 1,
+              operator: 2,
+              sizeof: 2,
+              dynamic_cast: 2,
+              typedef: 2,
+              const_cast: 2,
+              "const": 1,
+              struct: 1,
+              "for": 1,
+              static_cast: 2,
+              union: 1,
+              namespace: 1,
+              unsigned: 1,
+              "long": 1,
+              "throw": 1,
+              "volatile": 2,
+              "static": 1,
+              "protected": 1,
+              bool: 1,
+              template: 1,
+              mutable: 1,
+              "if": 1,
+              "public": 1,
+              friend: 2,
+              "do": 1,
+              "return": 1,
+              "goto": 1,
+              auto: 1,
+              "void": 2,
+              "enum": 1,
+              "else": 1,
+              "break": 1,
+              "new": 1,
+              extern: 1,
+              using: 1,
+              "true": 1,
+              "class": 1,
+              asm: 1,
+              "case": 1,
+              typeid: 1,
+              "short": 1,
+              reinterpret_cast: 2,
+              "default": 1,
+              "double": 1,
+              register: 1,
+              explicit: 1,
+              signed: 1,
+              typename: 1,
+              "try": 1,
+              "this": 1,
+              "switch": 1,
+              "continue": 1,
+              wchar_t: 1,
+              inline: 1,
+              "delete": 1,
+              alignof: 1,
+              char16_t: 1,
+              char32_t: 1,
+              constexpr: 1,
+              decltype: 1,
+              noexcept: 1,
+              nullptr: 1,
+              static_assert: 1,
+              thread_local: 1,
+              restrict: 1,
+              _Bool: 1,
+              complex: 1
+            },
+            built_in: {
+              std: 1,
+              string: 1,
+              cin: 1,
+              cout: 1,
+              cerr: 1,
+              clog: 1,
+              stringstream: 1,
+              istringstream: 1,
+              ostringstream: 1,
+              auto_ptr: 1,
+              deque: 1,
+              list: 1,
+              queue: 1,
+              stack: 1,
+              vector: 1,
+              map: 1,
+              set: 1,
+              bitset: 1,
+              multiset: 1,
+              multimap: 1,
+              unordered_set: 1,
+              unordered_map: 1,
+              unordered_multiset: 1,
+              unordered_multimap: 1,
+              array: 1,
+              shared_ptr: 1
+            }
+          };
+          return {
+            dM: {
+              k: a,
+              i: "</",
+              c: [hljs.CLCM, hljs.CBLCLM, hljs.QSM, {
+                cN: "string",
+                b: "'\\\\?.",
+                e: "'",
+                i: "."
+              }, {
+                cN: "number",
+                b: "\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"
+              }, hljs.CNM, {
+                cN: "preprocessor",
+                b: "#",
+                e: "$"
+              }, {
+                cN: "stl_container",
+                b: "\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",
+                e: ">",
+                k: a,
+                r: 10,
+                c: ["self"]
+              }]
+            }
+          }
+        }();
+        hljs.LANGUAGES.r = {
+          dM: {
+            c: [hljs.HCM, {
+              cN: "number",
+              b: "\\b0[xX][0-9a-fA-F]+[Li]?\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 0
+            }, {
+              cN: "number",
+              b: "\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 0
+            }, {
+              cN: "number",
+              b: "\\b\\d+\\.(?!\\d)(?:i\\b)?",
+              e: hljs.IMMEDIATE_RE,
+              r: 1
+            }, {
+              cN: "number",
+              b: "\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 0
+            }, {
+              cN: "number",
+              b: "\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 1
+            }, {
+              cN: "keyword",
+              b: "(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 10
+            }, {
+              cN: "keyword",
+              b: "\\.\\.\\.",
+              e: hljs.IMMEDIATE_RE,
+              r: 10
+            }, {
+              cN: "keyword",
+              b: "\\.\\.\\d+(?![\\w.])",
+              e: hljs.IMMEDIATE_RE,
+              r: 10
+            }, {
+              cN: "keyword",
+              b: "\\b(?:function)",
+              e: hljs.IMMEDIATE_RE,
+              r: 2
+            }, {
+              cN: "keyword",
+              b: "(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 1
+            }, {
+              cN: "literal",
+              b: "(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 10
+            }, {
+              cN: "literal",
+              b: "(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 1
+            }, {
+              cN: "identifier",
+              b: "[a-zA-Z.][a-zA-Z0-9._]*\\b",
+              e: hljs.IMMEDIATE_RE,
+              r: 0
+            }, {
+              cN: "operator",
+              b: "<\\-(?!\\s*\\d)",
+              e: hljs.IMMEDIATE_RE,
+              r: 2
+            }, {
+              cN: "operator",
+              b: "\\->|<\\-",
+              e: hljs.IMMEDIATE_RE,
+              r: 1
+            }, {
+              cN: "operator",
+              b: "%%|~",
+              e: hljs.IMMEDIATE_RE
+            }, {
+              cN: "operator",
+              b: ">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",
+              e: hljs.IMMEDIATE_RE,
+              r: 0
+            }, {
+              cN: "operator",
+              b: "%",
+              e: "%",
+              i: "\\n",
+              r: 1
+            }, {
+              cN: "identifier",
+              b: "`",
+              e: "`",
+              r: 0
+            }, {
+              cN: "string",
+              b: '"',
+              e: '"',
+              c: [hljs.BE],
+              r: 0
+            }, {
+              cN: "string",
+              b: "'",
+              e: "'",
+              c: [hljs.BE],
+              r: 0
+            }, {
+              cN: "paren",
+              b: "[[({\\])}]",
+              e: hljs.IMMEDIATE_RE,
+              r: 0
+            }]
+          }
+        };
+        hljs.initHighlightingOnLoad();
+        </script>
+          
+          </head>
+          
+          <body>
+          <h1>RepData peer Assesssment 1</h1>
+          
+          <h2>Loading the data</h2>
+          
+          <ul>
+          <li>Load the data</li>
+          </ul>
+          
+          <pre><code class="r">activity = read.csv(&quot;activity.csv&quot;)
+        </code></pre>
+          
+          <ul>
+          <li>Process/transform the data (if necessary) into a format suitable for your analysis</li>
+          </ul>
+          
+          <pre><code class="r">totalSteps &lt;- aggregate(steps ~ date, data = activity, sum, na.rm = TRUE)
+        </code></pre>
+          
+          <h2>What is mean total number of steps taken per day?</h2>
+          
+          <ul>
+          <li>Make a histogram of the total number of steps taken each day</li>
+          </ul>
+          
+          <pre><code class="r">hist(totalSteps$steps)
+        </code></pre>
+          
+          <p><img src="data:image/png;base64,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0VedLLPBtfpm0od2VgZx3+SCKYP5gyw7OHn4lHWTi7bKgi0nF47mN8rjRUm9gZhLu202qjchWneB36Trut2760lgjQW8xtaYbMU12WT9Nd9sWW9xRo7+p8taYB4H/8lsu8+M7V+V5e+fsc5iAgQIECBAYIpAX67g756xfTC5PKl3SpclmyZ3Sur2yKOScxKNAAECBAgQ6CDQlwJfQ63P2es2/cqkboXX7fTTkuOT6xKNAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBPog0Ke/ZNcHj7Yx/E9Wnt7WwbrfE6i/TFj/8U/9F8BaN4EtRt1+1q27XhHYLqm/enk1jc4CO6bnqZ1761gC9b3sziiWrsCxS/fQFuTI7pK91n8DrHUXeGq6VrTuAvUaq9ea1l3g2O5d9RwJDNLsRk4fAQIECBAgsPQEFPild04dEQECBAgQWKHAexEQIECAAIElKKDAL8GT6pAIECBAgIAC7zVAgAABAgSWoIACvwRPqkMiQIAAAQIEugts3b2rnhFYP2l+rxtIN4GN062idReo11i91rTuAr6XdbdqejJrJDwSIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAj0SmCdjGbdXo2o/4Nh1v9zZIQDEvCnald/svZIl68kZyUfSzZLlmv7Rg78x2N55giiTP4jOS05Kdk9adoemZjld0DWfS8p25peKq2+rsrjxRMHNOt42/za1u2R/c+ynXjq3s/OMvOa+9+nrv5y3z8n3xzltXncIKk219fLXF6bq55xGP+2me2WQxj/vlbT24wOa488zvoaW+pmI4Kl+3CLHNp5ya5JvUDemByaLMdWfxL0kmSj5KajrJfHalXMXprUFdgeyQXJhkmb395ZX184mya3Sr6TPDIZertnDuDLSVm9ZOxg2o53ll9tPmtdm+3Y0w5icpaZ19z00/dXWfzRpL4nVT6R1LJqc3m9zPW1ueoZh/Fvm9mzcgjvSW46lvpe1vY1thzMQrC02yNyeF8YO8TbZvoXY/PLafLBOdjPJ/W30u+arJc07bJMbN7M5LGuLB6a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" alt="plot of chunk unnamed-chunk-3" /> </p>
+          
+          <ul>
+          <li>Calculate and report the <strong>mean</strong> and <strong>median</strong> total number of steps taken per day </li>
+          </ul>
+          
+          <pre><code class="r">mean(totalSteps$steps)
+        </code></pre>
+          
+          <pre><code>## [1] 10766
+          </code></pre>
+          
+          <pre><code class="r">median(totalSteps$steps)
+        </code></pre>
+          
+          <pre><code>## [1] 10765
+          </code></pre>
+          
+          <ul>
+          <li>The <strong>mean</strong> total number of steps taken per day is 1.0766 &times; 10<sup>4</sup> steps.</li>
+          <li>The <strong>median</strong> total number of steps taken per day is 10765 steps.</li>
+          </ul>
+          
+          <h2>What is the average daily activity pattern?</h2>
+          
+          <ul>
+          <li>Make a time series plot (i.e. type = &ldquo;l&rdquo;) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</li>
+          </ul>
+          
+          <pre><code class="r">stepsInterval &lt;- aggregate(steps ~ interval, data = activity, mean, na.rm = TRUE)
+        plot(steps ~ interval, data = stepsInterval, type = &quot;l&quot;)
+        </code></pre>
+          
+      <p><img src="data:image/png"
+        alt="plot of chunk unnamed-chunk-5" /> </p>
+          
+          <ul>
+          <li>Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps? </li>
+          </ul>
+          
+          <pre><code class="r">stepsInterval[which.max(stepsInterval$steps), ]$interval
+        </code></pre>
+          
+          <pre><code>## [1] 835
+          </code></pre>
+          
+          <p>It is the <strong>835th</strong> interval.</p>
+          
+          <h2>Imputing missing values</h2>
+          
+          <ul>
+          <li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)</li>
+          </ul>
+          
+          <pre><code class="r">sum(is.na(activity$steps))
+        </code></pre>
+          
+          <pre><code>## [1] 2304
+          </code></pre>
+          
+          <p>Total 2304 rows are missing.</p>
+          
+          <ul>
+          <li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</li>
+          </ul>
+          
+          <p>: I used a strategy for filing in all of the missing values with the mean for that 5-minute interval. First of all, I made a function <strong>&ldquo;interval2steps&rdquo;</strong> to get the mean steps for particular 5-minute interval. </p>
+          
+          <pre><code class="r">interval2steps &lt;- function(interval) {
+            stepsInterval[stepsInterval$interval == interval, ]$steps
+          }
+        </code></pre>
+          
+          <ul>
+          <li>Create a new dataset that is equal to the original dataset but with the missing data filled in.</li>
+          </ul>
+          
+          <pre><code class="r">activityFilled &lt;- activity  # Make a new dataset with the original data
+        count = 0  # Count the number of data filled in
+        for (i in 1:nrow(activityFilled)) {
+          if (is.na(activityFilled[i, ]$steps)) {
+            activityFilled[i, ]$steps &lt;- interval2steps(activityFilled[i, ]$interval)
+            count = count + 1
+          }
+        }
+        cat(&quot;Total &quot;, count, &quot;NA values were filled.\n\r&quot;)
+        </code></pre>
+          
+          <pre><code>## Total  2304 NA values were filled.
+          ## 
+          </code></pre>
+          
+          <ul>
+          <li>Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. </li>
+          </ul>
+          
+          <pre><code class="r">totalSteps2 &lt;- aggregate(steps ~ date, data = activityFilled, sum)
+        hist(totalSteps2$steps)
+        </code></pre>
+          
+        <p><img src="data:image/png"
+          <pre><code class="r">mean(totalSteps2$steps)
+        </code></pre>
+          
+          <pre><code>## [1] 10766
+          </code></pre>
+          
+          <pre><code class="r">median(totalSteps2$steps)
+        </code></pre>
+          
+          <pre><code>## [1] 10766
+          </code></pre>
+          
+          <ul>
+          <li>The <strong>mean</strong> total number of steps taken per day is 1.0766 &times; 10<sup>4</sup> steps.</li>
+          <li>
+          <p>The <strong>median</strong> total number of steps taken per day is 1.0766 &times; 10<sup>4</sup> steps.</p>
+          </li>
+          <li>
+          <p>Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?</p>
+          </li>
+          </ul>
+          
+          <p>: The <strong>mean</strong> value is the <strong>same</strong> as the value before imputing missing data because we put the mean value for that particular 5-min interval. The median value shows <strong>a little</strong> difference : but it depends on <strong>where the missing values are</strong>.</p>
+          
+          <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
+          
+          <ul>
+          <li>Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.</li>
+          </ul>
+          
+          <pre><code class="r">activityFilled$day = ifelse(as.POSIXlt(as.Date(activityFilled$date))$wday%%6 == 
+                                                             0, &quot;weekend&quot;, &quot;weekday&quot;)
+        # For Sunday and Saturday : weekend, Other days : weekday
+        activityFilled$day = factor(activityFilled$day, levels = c(&quot;weekday&quot;, &quot;weekend&quot;))
+        </code></pre>
+          
+          <ul>
+          <li>Make a panel plot containing a time series plot (i.e. type = &ldquo;l&rdquo;) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:</li>
+          </ul>
+          
+          <pre><code class="r">stepsInterval2 = aggregate(steps ~ interval + day, activityFilled, mean)
+        library(lattice)
+        xyplot(steps ~ interval | factor(day), data = stepsInterval2, aspect = 1/2, 
+               type = &quot;l&quot;)
+        </code></pre>
+          
+      <p><img src="data:image/png"
+        alt="plot of chunk unnamed-chunk-12" /> </p>
+          
+          </body>
+          
+          </html>
